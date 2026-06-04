@@ -26,8 +26,26 @@ export default function Footer() {
           <p className="mt-2 font-semibold text-slate-500">{site.email}</p>
         </div>
       </div>
-      <div className="border-t border-slate-200 py-4 text-center text-xs font-bold text-slate-400">
-        {site.name} - Todos los derechos reservados
+      <div className="border-t border-slate-200 py-4">
+        <div className="container-x flex flex-col items-center justify-between gap-3 text-xs font-bold text-slate-400 sm:flex-row">
+          <span>{site.name} - Todos los derechos reservados</span>
+          <Link
+            href="https://maderklabs.com"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 opacity-60 transition hover:opacity-100"
+            aria-label="Powered by Maderk Labs"
+          >
+            <span>Powered by</span>
+            <Image
+              src="/brand/maderk-labs-logotipo-black.svg"
+              alt="Maderk Labs"
+              width={92}
+              height={20}
+              className="h-4 w-auto"
+            />
+          </Link>
+        </div>
       </div>
     </footer>
   )
