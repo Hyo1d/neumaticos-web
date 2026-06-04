@@ -39,7 +39,10 @@ export default async function MyOrdersPage() {
           <p className="text-sm font-black uppercase text-rubber">Mi cuenta</p>
           <h1 className="font-display text-4xl font-bold text-[#121629] sm:text-6xl">Mis pedidos</h1>
         </div>
-        <Link href="/catalogo" className="rounded-md bg-rubber px-4 py-3 text-sm font-black uppercase text-white">Comprar</Link>
+        <div className="flex flex-wrap gap-2">
+          <Link href="/cuenta/perfil" className="rounded-md border border-rubber/20 bg-white px-4 py-3 text-sm font-black uppercase text-rubber">Mis datos</Link>
+          <Link href="/catalogo" className="rounded-md bg-rubber px-4 py-3 text-sm font-black uppercase text-white">Comprar</Link>
+        </div>
       </div>
 
       <div className="mt-6 grid gap-4">

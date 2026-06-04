@@ -27,7 +27,14 @@ export default function CheckoutForm() {
       setCustomer((current) => ({
         ...current,
         name: current.name || String(data.user.user_metadata?.name ?? ''),
-        email: current.email || (data.user.email ?? '')
+        email: current.email || (data.user.email ?? ''),
+        phone: current.phone || String(data.user.user_metadata?.phone ?? ''),
+        address: current.address || [
+          data.user.user_metadata?.address,
+          data.user.user_metadata?.city,
+          data.user.user_metadata?.province,
+          data.user.user_metadata?.postal_code
+        ].filter(Boolean).join(', ')
       }))
     })
   }, [])

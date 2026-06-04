@@ -5,6 +5,7 @@ type RegisterPayload = {
   name?: string
   email?: string
   password?: string
+  phone?: string
 }
 
 export async function POST(request: Request) {
@@ -12,6 +13,7 @@ export async function POST(request: Request) {
   const name = payload?.name?.trim()
   const email = payload?.email?.trim().toLowerCase()
   const password = payload?.password
+  const phone = payload?.phone?.trim() ?? ''
 
   if (!name || !email || !password) {
     return NextResponse.json({ error: 'Completa nombre, email y contrasena.' }, { status: 400 })
@@ -32,7 +34,7 @@ export async function POST(request: Request) {
     password,
     email_confirm: true,
     app_metadata: { role: 'user' },
-    user_metadata: { name }
+    user_metadata: { name, phone, address: '', city: '', province: '', postal_code: '', document: '' }
   })
 
   if (error) {

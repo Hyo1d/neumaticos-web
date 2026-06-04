@@ -1,17 +1,29 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ArrowRight, UserPlus } from 'lucide-react'
+import { createClient } from '@/lib/supabase/client'
 
 export default function RegisterPage() {
   const router = useRouter()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data }) => {
+      if (!data.user) return
+      const role = data.user.app_metadata?.role === 'admin' ? 'admin' : 'user'
+      router.replace(role === 'admin' ? '/admin' : '/cuenta/perfil')
+      router.refresh()
+    })
+  }, [router])
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -21,18 +33,31 @@ export default function RegisterPage() {
     const response = await fetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, password })
+      body: JSON.stringify({ name, email, phone, password })
     })
-
-    setIsLoading(false)
 
     if (!response.ok) {
       const payload = await response.json().catch(() => null)
       setError(payload?.error ?? 'No pudimos crear la cuenta.')
+      setIsLoading(false)
       return
     }
 
-    router.push('/cuenta/login?created=1')
+    const supabase = createClient()
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email: email.trim().toLowerCase(),
+      password
+    })
+
+    setIsLoading(false)
+
+    if (signInError) {
+      router.push('/cuenta/login?created=1')
+      return
+    }
+
+    router.push('/cuenta/perfil')
+    router.refresh()
   }
 
   return (
@@ -54,6 +79,9 @@ export default function RegisterPage() {
 
           <label className="mt-4 block text-sm font-black text-slate-700" htmlFor="email">Email</label>
           <input id="email" className="mt-2 w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold outline-none transition focus:border-rubber focus:bg-white focus:ring-4 focus:ring-rubber/10" type="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+
+          <label className="mt-4 block text-sm font-black text-slate-700" htmlFor="phone">Telefono</label>
+          <input id="phone" className="mt-2 w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold outline-none transition focus:border-rubber focus:bg-white focus:ring-4 focus:ring-rubber/10" type="tel" value={phone} onChange={(event) => setPhone(event.target.value)} required />
 
           <label className="mt-4 block text-sm font-black text-slate-700" htmlFor="password">Contrasena</label>
           <input id="password" className="mt-2 w-full rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold outline-none transition focus:border-rubber focus:bg-white focus:ring-4 focus:ring-rubber/10" type="password" minLength={8} value={password} onChange={(event) => setPassword(event.target.value)} required />
