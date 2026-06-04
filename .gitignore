@@ -1,0 +1,7 @@
+.vercel
+.next
+node_modules
+.env*.local
+*.log
+test-results
+playwright-report

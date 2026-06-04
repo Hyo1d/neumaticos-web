@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" role="img" aria-labelledby="title desc">
+  <title id="title">Fantini Neumaticos</title>
+  <desc id="desc">Logo vectorial azul y blanco de Fantini Neumaticos</desc>
+  <rect width="420" height="220" rx="10" fill="#252A78"/>
+  <g fill="#ffffff" font-family="Arial Black, Arial, Helvetica, sans-serif" font-style="italic" font-weight="900" transform="skewX(-10)">
+    <text x="65" y="102" font-size="47" letter-spacing="-1.5">FANTINI</text>
+    <text x="92" y="145" font-size="40" letter-spacing="-1.2">NEUMATICOS</text>
+  </g>
+</svg>
