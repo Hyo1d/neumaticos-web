@@ -3,31 +3,31 @@ import { createAdminClient } from '@/lib/supabase/admin'
 
 export const fallbackHeroSlides: HeroSlide[] = [
   {
-    eyebrow: 'Neumaticos para auto, SUV y camioneta',
-    title: 'Cubiertas de todas las marcas',
-    text: 'Compra por medida y consulta disponibilidad por WhatsApp.',
+    eyebrow: 'Stock real en Jesus Maria',
+    title: 'Cubiertas para cada camino',
+    text: 'Elegi por medida y recibi asesoramiento para tu auto, SUV o camioneta.',
     cta: 'Ver catalogo',
     href: '/catalogo',
-    image: '/fantini-hero-showroom.png',
-    imageAlt: 'Showroom de neumaticos y llantas'
+    image: '/fantini/photos/stock-hero.webp',
+    imageAlt: 'Deposito de neumaticos de Fantini'
   },
   {
-    eyebrow: 'Atencion en Jesus Maria',
-    title: 'Instalacion y taller completo',
-    text: 'Alineado, balanceado, enderezado y centrado de llantas.',
+    eyebrow: 'Taller propio',
+    title: 'Instalacion y servicio completo',
+    text: 'Alineado, balanceado, reparacion y trabajo profesional sobre tu vehiculo.',
     cta: 'Pedir turno',
     href: 'https://wa.me/5493525503984',
-    image: '/fantini-hero-service.png',
-    imageAlt: 'Servicio de alineacion y neumaticos'
+    image: '/fantini/photos/taller-hero.webp',
+    imageAlt: 'Taller de Fantini Neumaticos en funcionamiento'
   },
   {
-    eyebrow: 'Llantas deportivas',
-    title: 'Renova tu auto con asesoramiento',
-    text: 'Trabajamos medidas urbanas, ruta, SUV y performance.',
+    eyebrow: 'Primeras marcas',
+    title: 'Asesoramiento que se ve',
+    text: 'Comparamos opciones y medidas para que elijas el neumatico correcto.',
     cta: 'Consultar ahora',
     href: 'https://wa.me/5493525503984',
-    image: '/fantini-hero-tires.png',
-    imageAlt: 'Neumaticos de auto'
+    image: '/fantini/photos/showroom-hero.webp',
+    imageAlt: 'Exhibicion de neumaticos en Fantini'
   }
 ]
 
