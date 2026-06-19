@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "products:images:export": "node scripts/export-product-image-candidates.js",
+    "products:images:download": "node scripts/download-product-images-to-desktop.js",
     "products:images:dry-run": "node scripts/apply-product-images-from-csv.js",
     "products:images:apply": "node scripts/apply-product-images-from-csv.js data/product-image-candidates.csv --commit"
   },
