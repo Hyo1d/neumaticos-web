@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "products:images:export": "node scripts/export-product-image-candidates.js",
+    "products:images:dry-run": "node scripts/apply-product-images-from-csv.js",
+    "products:images:apply": "node scripts/apply-product-images-from-csv.js data/product-image-candidates.csv --commit"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
